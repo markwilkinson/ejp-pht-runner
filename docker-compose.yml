@@ -1,0 +1,39 @@
+version: "2.0"
+services:
+  yarrrml: # Database implementation, in this case MySQL
+    image: markw/yarrrml-parser-ejp
+    container_name: yarrrml-parser
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    restart: always
+    environment:
+      PARSERIN: /data/yarrrml.yaml
+      PARSEROUT: /data/rmlrules.ttl
+    depends_on:
+      - configure
+    volumes:
+      - /home/osboxes/CODE/EJP/HackathonJune2020/PHT/conf:/conf  # location of the yarrrml file
+      - /home/osboxes/CODE/EJP/HackathonJune2020/PHT/meta:/meta
+      - /home/osboxes/CODE/EJP/HackathonJune2020/PHT/work:/work  # a folder to put intermediate documents like the RML
+
+  rdfizer: 
+    image: rdfizer
+    container_name: rdfizer
+#    environment:
+    ports:
+      - "4000:4000"
+    depends_on:
+      - yarrrml
+    volumes:
+      - /home/osboxes/CODE/EJP/HackathonJune2020/PHT/conf:/conf
+      - /home/osboxes/CODE/EJP/HackathonJune2020/PHT/meta:/meta
+      - /home/osboxes/CODE/EJP/HackathonJune2020/PHT/work:/work  # RDFized data will be stored here
+    links:
+      - yarrrml
+
+  configure:
+    image: ejp-pht-configure
+    container_name: ejp-pht-configure
+    volumes:
+      - /home/osboxes/CODE/EJP/HackathonJune2020/PHT/conf:/conf
+      - /home/osboxes/CODE/EJP/HackathonJune2020/PHT/meta:/meta
+      - /home/osboxes/CODE/EJP/HackathonJune2020/PHT/work:/work
