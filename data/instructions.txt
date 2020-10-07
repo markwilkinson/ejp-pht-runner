@@ -1,0 +1,31 @@
+docker build -t yarrrml-parser-ejp .
+# the CMD for yarrrml-parser-ejp contains two environemnt variables:
+# PARSERIN the location of the input yarrrml file
+# PARSEROUT the loction to write the RML turtle file
+
+# cd into the folder with the data
+cd ../data/
+
+# set both environment variables
+# note that we're mounting "here" ($PWD) to the image's /data folder
+# so the environment variables need to be relative to that!
+docker run -e PARSERIN=/data/yarrrml.yaml -e PARSEROUT=/data/rmlrules.ttl --rm --name yarrrml-parser -v $PWD:/data yarrrml-parser-ejp:latest
+### TODO
+### one day the yarrrml transform has to happen modularly
+### be informed by the Analytics tool - which transforms need to be made?
+### metadata lookup of yarrrml files vs. what ontological properties they give
+
+cat rmlrules.ttl 
+
+# Now the rdf conversion
+
+cp config.ini config_auto.ini
+pico config_auto.ini 
+ls
+pico config_auto.ini 
+rm triples/*
+curl -v localhost:4000/graph_creation/data/config.ini
+shopt -s histappend
+PROMPT_COMMAND='history -a;history -n'
+ls
+

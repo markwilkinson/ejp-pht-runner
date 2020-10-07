@@ -1,0 +1,11 @@
+Identifier,Birthdate,Gender,GenLabel,Diagnosis,Cortisol,ACTH,Na,K
+D0001,19/01/1990,http://purl.bioontology.org/ontology/SNOMEDCT/703118005,Female,Addison disease,20.50,19.70,137.00,4.00
+D0002,31/12/1974,http://purl.bioontology.org/ontology/SNOMEDCT/703117000,Male,Addison disease,17.30,32.10,139.00,4.50
+D0003,09/09/1990,http://purl.bioontology.org/ontology/SNOMEDCT/703117000,Male,Addison disease,16.00,11.30,137.00,4.30
+D0004,11/03/1998,http://purl.bioontology.org/ontology/SNOMEDCT/703117000,Male,Addison disease,20.00,33.50,141.00,4.10
+D0005,18/06/1983,http://purl.bioontology.org/ontology/SNOMEDCT/703118005,Female,Addison disease,5.10,38.10,142.00,4.00
+D0006,06/07/1981,http://purl.bioontology.org/ontology/SNOMEDCT/703118005,Female,Addison disease,7.00,24.20,141.00,3.90
+D0007,23/05/1985,http://purl.bioontology.org/ontology/SNOMEDCT/703117000,Male,Addison disease,18.60,16.80,142.00,3.70
+D0008,03/11/1999,http://purl.bioontology.org/ontology/SNOMEDCT/703118005,Female,Addison disease,5.00,14.90,136.00,4.50
+D0009,04/09/1982,http://purl.bioontology.org/ontology/SNOMEDCT/703117000,Male,Addison disease,17.20,25.80,137.00,4.30
+D0010,21/10/1989,http://purl.bioontology.org/ontology/SNOMEDCT/703117000,Male,Addison disease,18.10,10.00,138.00,3.8

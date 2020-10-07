@@ -1,0 +1,215 @@
+prefixes:
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  ex: http://ejp-rd.eu/ids/
+  obo: http://purl.obolibrary.org/obo/
+  this: http://our-data.org/data/
+  sio: https://semanticscience.org/resource/
+
+
+mappings:
+  identifier_has_value:
+    sources:
+      - ['test.csv~csv']
+    s: this:individual_$(Identifier)#ID
+    po:
+      - [sio:has-value, $(Identifier)]
+      
+  identifier_denotes:
+    sources:
+      - ['test.csv~csv']
+    s: this:individual_$(Identifier)#ID
+    po:
+      - predicates: a
+        objects:
+            value: https://ejp-rd.eu/vocab/identifier
+            type: iri
+      - predicates: sio:denotes
+        objects:
+            value: this:individual_$(Identifier)#bdRole
+            type: iri
+
+      
+      
+  person_has_role:
+    sources:
+      - ['test.csv~csv']
+    s: this:individual_$(Identifier)#Person
+    po:
+      - predicates: a
+        objects:
+            value: [https://ejp-rd.eu/vocab/Person]
+            type: iri
+      - predicates: sio:has-role
+        objects:
+            value: [this:individual_$(Identifier)#bdRole]
+            type: iri
+      
+  bdrole_annotation:
+    sources:
+      - ['test.csv~csv']
+    s: this:individual_$(Identifier)#bdRole
+    po:
+      - [a, obo:OBI_0000093]
+      - [rdfs:label, "Patient"]
+      
+  
+      
+  role_realized_proces:
+    sources:
+      - ['test.csv~csv']
+    s: this:individual_$(Identifier)#bdRole
+    po:
+      - predicates: sio:is-realized-in
+        objects:
+            value:  this:individual_$(Identifier)#bdProcess
+            type: iri
+
+  person_has_quality:
+    sources:
+      - ['test.csv~csv']
+    s: this:individual_$(Identifier)#Person
+    po:
+      - predicates: sio:has-quality
+        objects:
+            value:  this:individual_$(Identifier)#bdQuality
+            type: iri
+
+  quality_annotation:
+    sources:
+      - ['test.csv~csv']
+    s: this:individual_$(Identifier)#bdQuality
+    po:
+      - [a, obo:NCIT_C68615]
+      - [rdfs:label, "Birth Date"]
+
+  process_has_output:
+    sources:
+      - ['test.csv~csv']
+    s: this:individual_$(Identifier)#bdProcess
+    po:
+      - predicates: sio:has-output
+        objects:
+            value:  this:individual_$(Identifier)#bdMeasVal
+            type: iri
+
+  quality_basis_for_meas:
+    sources:
+      - ['test.csv~csv']
+    s: this:individual_$(Identifier)#bdQuality
+    po:
+      - predicates: sio:is-basis-for
+        objects:
+            value:  this:individual_$(Identifier)#bdMeasVal
+            type: iri
+
+
+  measval_value:
+    sources:
+      - ['test.csv~csv']
+    s: this:individual_$(Identifier)#bdMeasVal
+    po:
+      - [a, sio:measurement-value]
+      - [sio:has-value, $(Birthdate), xsd:string]
+      - [rdfs:label, "Date $(Birthdate) should be in ISO format"]
+
+
+
+# begin gender
+
+  person_has_genderrole:
+    sources:
+      - ['test.csv~csv']
+    s: this:individual_$(Identifier)#Person
+    po:
+      - predicates: a
+        objects:
+            value: [https://ejp-rd.eu/vocab/Person]
+            type: iri
+      - predicates: sio:has-role
+        objects:
+            value: [this:individual_$(Identifier)#genderRole]
+            type: iri
+
+  genderrole_annotation:
+    sources:
+      - ['test.csv~csv']
+    s: this:individual_$(Identifier)#genderRole
+    po:
+      - [a, obo:OBI_0000093]
+      - [rdfs:label, "Patient"]
+      
+
+  identifier_denotes_gender:
+    sources:
+      - ['test.csv~csv']
+    s: this:individual_$(Identifier)#ID
+    po:
+      - predicates: a
+        objects:
+            value: https://ejp-rd.eu/vocab/identifier
+            type: iri
+      - predicates: sio:denotes
+        objects:
+            value: this:individual_$(Identifier)#genderRole
+            type: iri
+            
+  genderrole_realized_proces:
+    sources:
+      - ['test.csv~csv']
+    s: this:individual_$(Identifier)#genderRole
+    po:
+      - predicates: sio:is-realized-in
+        objects:
+            value:  this:individual_$(Identifier)#genderProcess
+            type: iri
+
+  person_has_genderquality:
+    sources:
+      - ['test.csv~csv']
+    s: this:individual_$(Identifier)#Person
+    po:
+      - predicates: sio:has-quality
+        objects:
+            value:  this:individual_$(Identifier)#genderQuality
+            type: iri
+
+  genderquality_annotation:
+    sources:
+      - ['test.csv~csv']
+    s: this:individual_$(Identifier)#genderQuality
+    po:
+      - [a, obo:NCIT_C17357]
+      - [rdfs:label, "Gender"]
+      
+  
+  genderquality_basis_for_meas:
+    sources:
+      - ['test.csv~csv']
+    s: this:individual_$(Identifier)#genderQuality
+    po:
+      - predicates: sio:is-basis-for
+        objects:
+            value:  this:individual_$(Identifier)#genderMeasVal
+            type: iri
+
+  genderprocess_has_output:
+    sources:
+      - ['test.csv~csv']
+    s: this:individual_$(Identifier)#genderProcess
+    po:
+      - predicates: sio:has-output
+        objects:
+            value:  this:individual_$(Identifier)#genderMeasVal
+            type: iri
+
+
+  gendermeasval_value:
+    sources:
+      - ['test.csv~csv']
+    s: this:individual_$(Identifier)#genderMeasVal
+    po:
+      - [a, $(Gender)]
+      - [rdfs:label, $(GenLabel)]
+
+
