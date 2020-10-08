@@ -10,14 +10,14 @@ prefixes:
 mappings:
   identifier_has_value:
     sources:
-      - ['test.csv~csv']
+      - ['addison.csv~csv']
     s: this:individual_$(Identifier)#ID
     po:
       - [sio:has-value, $(Identifier)]
       
   identifier_denotes:
     sources:
-      - ['test.csv~csv']
+      - ['addison.csv~csv']
     s: this:individual_$(Identifier)#ID
     po:
       - predicates: a
@@ -33,7 +33,7 @@ mappings:
       
   person_has_role:
     sources:
-      - ['test.csv~csv']
+      - ['addison.csv~csv']
     s: this:individual_$(Identifier)#Person
     po:
       - predicates: a
@@ -47,7 +47,7 @@ mappings:
       
   bdrole_annotation:
     sources:
-      - ['test.csv~csv']
+      - ['addison.csv~csv']
     s: this:individual_$(Identifier)#bdRole
     po:
       - [a, obo:OBI_0000093]
@@ -57,7 +57,7 @@ mappings:
       
   role_realized_proces:
     sources:
-      - ['test.csv~csv']
+      - ['addison.csv~csv']
     s: this:individual_$(Identifier)#bdRole
     po:
       - predicates: sio:is-realized-in
@@ -67,7 +67,7 @@ mappings:
 
   person_has_quality:
     sources:
-      - ['test.csv~csv']
+      - ['addison.csv~csv']
     s: this:individual_$(Identifier)#Person
     po:
       - predicates: sio:has-quality
@@ -77,7 +77,7 @@ mappings:
 
   quality_annotation:
     sources:
-      - ['test.csv~csv']
+      - ['addison.csv~csv']
     s: this:individual_$(Identifier)#bdQuality
     po:
       - [a, obo:NCIT_C68615]
@@ -85,7 +85,7 @@ mappings:
 
   process_has_output:
     sources:
-      - ['test.csv~csv']
+      - ['addison.csv~csv']
     s: this:individual_$(Identifier)#bdProcess
     po:
       - predicates: sio:has-output
@@ -95,7 +95,7 @@ mappings:
 
   quality_basis_for_meas:
     sources:
-      - ['test.csv~csv']
+      - ['addison.csv~csv']
     s: this:individual_$(Identifier)#bdQuality
     po:
       - predicates: sio:is-basis-for
@@ -106,7 +106,7 @@ mappings:
 
   measval_value:
     sources:
-      - ['test.csv~csv']
+      - ['addison.csv~csv']
     s: this:individual_$(Identifier)#bdMeasVal
     po:
       - [a, sio:measurement-value]
@@ -119,7 +119,7 @@ mappings:
 
   person_has_genderrole:
     sources:
-      - ['test.csv~csv']
+      - ['addison.csv~csv']
     s: this:individual_$(Identifier)#Person
     po:
       - predicates: a
@@ -133,7 +133,7 @@ mappings:
 
   genderrole_annotation:
     sources:
-      - ['test.csv~csv']
+      - ['addison.csv~csv']
     s: this:individual_$(Identifier)#genderRole
     po:
       - [a, obo:OBI_0000093]
@@ -142,7 +142,7 @@ mappings:
 
   identifier_denotes_gender:
     sources:
-      - ['test.csv~csv']
+      - ['addison.csv~csv']
     s: this:individual_$(Identifier)#ID
     po:
       - predicates: a
@@ -156,7 +156,7 @@ mappings:
             
   genderrole_realized_proces:
     sources:
-      - ['test.csv~csv']
+      - ['addison.csv~csv']
     s: this:individual_$(Identifier)#genderRole
     po:
       - predicates: sio:is-realized-in
@@ -166,7 +166,7 @@ mappings:
 
   person_has_genderquality:
     sources:
-      - ['test.csv~csv']
+      - ['addison.csv~csv']
     s: this:individual_$(Identifier)#Person
     po:
       - predicates: sio:has-quality
@@ -176,7 +176,7 @@ mappings:
 
   genderquality_annotation:
     sources:
-      - ['test.csv~csv']
+      - ['addison.csv~csv']
     s: this:individual_$(Identifier)#genderQuality
     po:
       - [a, obo:NCIT_C17357]
@@ -185,7 +185,7 @@ mappings:
   
   genderquality_basis_for_meas:
     sources:
-      - ['test.csv~csv']
+      - ['addison.csv~csv']
     s: this:individual_$(Identifier)#genderQuality
     po:
       - predicates: sio:is-basis-for
@@ -195,7 +195,7 @@ mappings:
 
   genderprocess_has_output:
     sources:
-      - ['test.csv~csv']
+      - ['addison.csv~csv']
     s: this:individual_$(Identifier)#genderProcess
     po:
       - predicates: sio:has-output
@@ -206,7 +206,7 @@ mappings:
 
   gendermeasval_value:
     sources:
-      - ['test.csv~csv']
+      - ['addison.csv~csv']
     s: this:individual_$(Identifier)#genderMeasVal
     po:
       - [a, $(Gender)]

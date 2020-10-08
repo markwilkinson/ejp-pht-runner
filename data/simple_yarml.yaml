@@ -1,0 +1,24 @@
+prefixes: 
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns# 
+  rdfs: http://www.w3.org/2000/01/rdf-schema# 
+  ex: http://ejp-rd.eu/ids/ 
+  obo: http://purl.obolibrary.org/obo/ 
+  this: http://our-data.org/data/ 
+  sio: https://semanticscience.org/resource/ 
+  vocab: https://ejp-rd.eu/vocab/
+mappings: 
+  identifier_has_value: 
+    sources: 
+      - ['addison.csv~csv'] 
+    s: this:individual_$(Identifier)#ID 
+    po: 
+      - [sio:has-value, $(Identifier)] 
+  identifier_denotes: 
+    sources: 
+      - ['addison.csv~csv'] 
+    s: this:individual_$(Identifier)#ID 
+    po: 
+      - [a, vocab:identifier]
+      - [sio:denotes,  this:individual_$(Identifier)#bdRole]
+
+  

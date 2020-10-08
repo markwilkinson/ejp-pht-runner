@@ -1,0 +1,34 @@
+If necessary, build the docker images:
+~/CODE/EJP/HackathonJune2020/yarrrml-parser $docker build -t yarrrml-parser-ejp .
+~/CODE/EJP/HackathonJune2020/SDM-RDFizer $ docker build -t rdfizer .
+
+
+###go into folder with yarrrml, the csv, and the config.ini files
+docker run -e PARSERIN=/data/yarrrml.yaml -e PARSEROUT=/data/rmlrules.ttl --rm --name yarrrml-parser -v $PWD:/data yarrrml-parser-ejp:latest
+###CONVERSION DONE
+
+
+### NOTE:  The rmlriules.ttl file contains the reference to the source data (CSV) file!
+
+# mount current folder (containing the CSV!) as /data in the image
+docker run -d -p 4000:4000 --name rdfizer -v $PWD:/data rdfizer
+
+#---------  config.ini - must exist in the $PWD folder ----------
+[default]
+main_directory: /data
+
+[datasets]
+number_of_datasets: 1
+output_folder: ${default:main_directory}/triples
+all_in_one_file: yes
+remove_duplicate: yes
+enrichment: yes
+name: addisons2
+
+[dataset1]
+name: addisons2
+mapping: ${default:main_directory}/rmlrules.ttl 
+# -----------------------------
+
+# this is assuming that config.ini is in the $PWD folder (/data)
+curl -v localhost:4000/graph_creation/data/config.ini
